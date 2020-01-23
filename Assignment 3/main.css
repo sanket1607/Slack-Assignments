@@ -1,0 +1,29 @@
+body {
+    background-color: #ffccff;
+}
+
+div.outer-box {
+    margin: auto;
+    margin-top: 15%;
+    max-width: 90%;
+    /*    text-align: center;*/
+    display: block;
+    border-radius: 20px;
+}
+
+ul li a {
+    color: lightslategray;
+}
+
+ul li a:hover {
+    color: blue;
+}
+
+.search {
+    margin: auto;
+    width: 20rem;
+    padding: 15px;
+    border-radius: 17px;
+    border-style: none;
+    background-color: #F0F0F0;
+}
