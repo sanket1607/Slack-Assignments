@@ -4,7 +4,7 @@ body {
 
 div.outer-box {
     margin: auto;
-    margin-top: 15%;
+    margin-top: 1%;
     max-width: 90%;
     /*    text-align: center;*/
     display: block;
@@ -26,4 +26,33 @@ ul li a:hover {
     border-radius: 17px;
     border-style: none;
     background-color: #F0F0F0;
+}
+
+div.sidemenu {
+    /*    text-align: center;*/
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebar a {
+    display: block;
+    color: lightslategray;
+    padding: 16px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.sidebar a.active {
+    color: black;
+
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
 }
