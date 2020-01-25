@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            padding: 50px;
+            background-color: aqua;
+            font-family: sans-serif;
+
+        }
+
+        #root {
+            display: flex;
+            justify-content: flex;
+        }
+
+        .todoListMain .header input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #FFF;
+            width: 165px;
+        }
+
+        .todoListMain .header button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            margin-right: 0px;
+            background-color: #0066FF;
+            color: #FFF;
+            border: 2px solid #0066FF;
+        }
+
+        .todoListMain .header button:hover {
+            background-color: #003399;
+            border: 2px solid #003399;
+            cursor: pointer;
+        }
+
+        .todoListMain .theList li {
+            color: #333;
+            background-color: rgba(255, 255, 255, .5);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            list-style: none;
+        }
+
+        ul.theList {
+            padding: 0;
+        }
+
+    </style>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Superdecision extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={
+                items:[]
+            }
+            this.addItem=this.addItem.bind(this);
+            this.createTasks=this.createTasks.bind(this);
+            this.deleteItem=this.deleteItem.bind(this);
+        }
+        createTasks(item){
+            return <li key={item.key} onClick={()=>this.deleteItem(item.key)}>{item.text}</li>
+        }
+        deleteItem(key){
+            var filteredItems=this.state.items.filter(function(item1){
+                return(item1.key!==key)
+            });
+            this.setState({
+                items:filteredItems
+            });
+        }
+        
+        addItem(e){
+            if(this._inputElement.value!=""){
+                var newItem={
+                    text: this._inputElement.value,
+                    key:Date.now()
+                };
+                
+                this.setState((prevState)=>{
+                    return {
+                        items:prevState.items.concat(newItem)
+                    };
+                });
+            }
+            
+            this._inputElement.value="";
+            console.log(this.state.items);
+            e.preventDefault();
+            
+        }
+        render(){
+       
+        var listItems=this.state.items.map(this.createTasks);
+        return (
+            <div className="todoListMain">
+                <div className="header">
+                    <form onSubmit={this.addItem}>
+                        <input ref={(a) => this._inputElement=a} placeholder="Enter Task">
+                        </input>
+                        <button type="submit">Add Task</button>
+                    </form>
+                </div>
+                <ul className="theList">
+                    {listItems}
+                </ul>
+            </div>
+        );
+        }
+        }
+ReactDOM.render(<Superdecision/>,document.getElementById("root"));
+        
+    </script>
+
+</body>
+
+</html>
