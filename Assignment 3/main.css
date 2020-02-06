@@ -56,3 +56,22 @@ div.sidemenu {
     background-color: #555;
     color: white;
 }
+
+.img-responsive{
+    border-radius: 20px;
+}
+.active1{
+    color: blue;
+}
+
+.notactive{
+    color: lightslategray;
+}
+
+.col-md-1icon1{
+    float: right;
+    margin-left: 50%;
+}
+.col-md-1icon2{
+    margin-left: 10%;
+}
